@@ -24,10 +24,8 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int price = quantity * 5;
-        String priceMessage = "Total: $" + price;
-        priceMessage += "\nThank You!";
-        displayMessage(priceMessage);
+        int price = calculatePrice(quantity, 5);
+        displayMessage(createOrderSummary(price));
     }
 
     /**
@@ -35,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
      */
     public void increment(View view) {
         quantity++;
-        display(quantity);
+        displayQuantity(quantity);
     }
 
     /**
@@ -43,16 +41,16 @@ public class MainActivity extends ActionBarActivity {
      */
     public void decrement(View view) {
         quantity--;
-        display(quantity);
+        displayQuantity(quantity);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
+    private void displayQuantity(int numberOfCoffees) {
         TextView quantityTextView = (TextView) findViewById(
                 R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText("" + numberOfCoffees);
     }
 
     /**
@@ -69,5 +67,29 @@ public class MainActivity extends ActionBarActivity {
     private void displayMessage(String message) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(message);
+    }
+
+    /**
+     * Calculates the price of the order.
+     *
+     * @param quantity    is the number of cups of coffee ordered
+     * @param pricePerCup is the price per cup of coffee
+     */
+    private int calculatePrice(int quantity, int pricePerCup) {
+        return quantity * pricePerCup;
+    }
+
+    /**
+     * Create a summary of the order.
+     *
+     * @param price of the order
+     * @return text summary
+     */
+    private String createOrderSummary(int price) {
+        String priceMessage = "Name: Kapitan Kunal" +
+                "\nQuantity: " + quantity +
+                "\nTotal:" + price +
+                "\nThank you!";
+        return priceMessage;
     }
 }
