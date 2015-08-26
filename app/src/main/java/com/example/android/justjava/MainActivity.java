@@ -3,6 +3,7 @@ package com.example.android.justjava;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -24,8 +25,11 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        boolean hasWhippedCream = whippedCreamCheckbox.isChecked();
+
         int price = calculatePrice(quantity, 5);
-        displayMessage(createOrderSummary(price));
+        displayMessage(createOrderSummary(price, hasWhippedCream));
     }
 
     /**
@@ -77,11 +81,12 @@ public class MainActivity extends ActionBarActivity {
      * @param price of the order
      * @return text summary
      */
-    private String createOrderSummary(int price) {
-        String priceMessage = "Name: Kapitan Kunal" +
-                "\nQuantity: " + quantity +
-                "\nTotal:" + price +
-                "\nThank you!";
+    private String createOrderSummary(int price, boolean addWhippedCream) {
+        String priceMessage = "Name: Kapitan Kunal";
+        priceMessage += "\nAdd whipped cream? " + addWhippedCream;
+        priceMessage += "\nQuantity: " + quantity;
+        priceMessage += "\nTotal:" + price;
+        priceMessage += "\nThank you!";
         return priceMessage;
     }
 }
