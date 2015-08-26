@@ -1,5 +1,7 @@
 package com.example.android.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -39,8 +41,24 @@ public class MainActivity extends AppCompatActivity {
         EditText nameField = (EditText) findViewById(R.id.name_field);
         String name = nameField.getText().toString();
 
+        // Calculate the price
         int price = calculatePrice(hasWhippedCream, hasChocolate);
-        displayMessage(createOrderSummary(name, price, hasWhippedCream, hasChocolate));
+
+        // Get the order summary and display on the screen
+        String orderSummary = createOrderSummary(name, price, hasWhippedCream, hasChocolate);
+        displayMessage(orderSummary);
+
+        // Use an intent to launch an email app.
+        // Send the order summary in the email body.
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "JustJava order for " + name);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, orderSummary);
+
+        if (emailIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(emailIntent);
+        }
+
     }
 
     /**
