@@ -10,5 +10,12 @@
     <string name="quantity_header">Cantidad</string>
     <string name="order_button">Ordenar</string>
     <string name="to_add">Añadir </string>
+    <string name="total">Total</string>
     <string name="thank_you">Gracias!</string>
+    <string name="email_subject">Sólo Java orden para</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="toast_less_1_coffee">No se puede tener menos de 1 café</string>
+    <string name="toast_more_100_coffee">No se pueden tener más de 100 cafés</string>
+
 </resources>

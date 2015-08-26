@@ -9,5 +9,11 @@
     <string name="quantity_header">Quantity</string>
     <string name="order_button">Order</string>
     <string name="to_add">Add </string>
+    <string name="total">Total</string>
     <string name="thank_you">Thank You!</string>
+    <string name="email_subject">Just Java order for</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="toast_less_1_coffee">You cannot have less than 1 coffee</string>
+    <string name="toast_more_100_coffee">You cannot have more than 100 coffees</string>
 </resources>
