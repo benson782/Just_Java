@@ -44,9 +44,8 @@ public class MainActivity extends AppCompatActivity {
         // Calculate the price
         int price = calculatePrice(hasWhippedCream, hasChocolate);
 
-        // Get the order summary and display on the screen
+        // Get the order summary
         String orderSummary = createOrderSummary(name, price, hasWhippedCream, hasChocolate);
-        displayMessage(orderSummary);
 
         // Use an intent to launch an email app.
         // Send the order summary in the email body.
@@ -97,14 +96,6 @@ public class MainActivity extends AppCompatActivity {
         TextView quantityTextView = (TextView) findViewById(
                 R.id.quantity_text_view);
         quantityTextView.setText("" + numberOfCoffees);
-    }
-
-    /**
-     * This method displays the given text on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
     }
 
     /**
