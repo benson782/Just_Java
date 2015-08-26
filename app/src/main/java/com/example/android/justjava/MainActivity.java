@@ -1,7 +1,7 @@
 package com.example.android.justjava;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -11,7 +11,7 @@ import java.text.NumberFormat;
 /**
  * This app displays an order form to order coffee.
  */
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     int quantity = 2;
 
@@ -85,7 +85,7 @@ public class MainActivity extends ActionBarActivity {
         String priceMessage = "Name: Kapitan Kunal";
         priceMessage += "\nAdd whipped cream? " + addWhippedCream;
         priceMessage += "\nQuantity: " + quantity;
-        priceMessage += "\nTotal:" + price;
+        priceMessage += "\nTotal: $" + price;
         priceMessage += "\nThank you!";
         return priceMessage;
     }
