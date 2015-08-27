@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16sp"
             android:layout_marginTop="16sp"
-            android:text="@string/toppings_header"
+            android:text="@string/toppings"
             android:textAllCaps="true" />
 
         <CheckBox
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16sp"
             android:layout_marginTop="16sp"
-            android:text="@string/quantity_header"
+            android:text="@string/quantity"
             android:textAllCaps="true" />
 
         <LinearLayout
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16sp"
             android:onClick="submitOrder"
-            android:text="@string/order_button" />
+            android:text="@string/order" />
 
     </LinearLayout>
 

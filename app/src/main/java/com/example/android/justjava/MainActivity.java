@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         // Send the order summary in the email body.
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
         emailIntent.setData(Uri.parse("mailto:")); // only email apps should handle this
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject) + " " + name);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.order_summary_email_subject, name));
         emailIntent.putExtra(Intent.EXTRA_TEXT, orderSummary);
 
         if (emailIntent.resolveActivity(getPackageManager()) != null) {
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view) {
         if (quantity == 100) {
             // Show an error message as a toast
-            Toast.makeText(this, getString(R.string.toast_more_100_coffee), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_more_than_100_coffee), Toast.LENGTH_SHORT).show();
             // Exit this method early because there's nothing left to do
             return;
         }
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     public void decrement(View view) {
         if (quantity == 1) {
             // Show an error message as a toast
-            Toast.makeText(this, getString(R.string.toast_less_1_coffee), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_less_than_1_coffee), Toast.LENGTH_SHORT).show();
             // Exit this method early because there's nothing left to do
             return;
         }
@@ -132,11 +132,11 @@ public class MainActivity extends AppCompatActivity {
      * @return text summary
      */
     private String createOrderSummary(String name, int price, boolean addWhippedCream, boolean addChocolate) {
-        String priceMessage = getString(R.string.name) + ": " + name;
-        priceMessage += "\n" + getString(R.string.to_add) + " " + getString(R.string.whipped_cream) + "? " + (addWhippedCream ? getString(R.string.yes) : getString(R.string.no));
-        priceMessage += "\n" + getString(R.string.to_add) + " " + getString(R.string.chocolate) + "? " + (addChocolate ? getString(R.string.yes) : getString(R.string.no));
-        priceMessage += "\n" + getString(R.string.quantity_header) + ": " + quantity;
-        priceMessage += "\n" + getString(R.string.total) + ": $" + price;
+        String priceMessage = getString(R.string.order_summary_name, name);
+        priceMessage += "\n" + getString(R.string.order_summary_whipped_cream, addWhippedCream);
+        priceMessage += "\n" + getString(R.string.order_summary_chocolate, addChocolate);
+        priceMessage += "\n" + getString(R.string.order_summary_quantity, quantity);
+        priceMessage += "\n" + getString(R.string.order_summary_price, NumberFormat.getCurrencyInstance().format(price));
         priceMessage += "\n" + getString(R.string.thank_you);
         return priceMessage;
     }
